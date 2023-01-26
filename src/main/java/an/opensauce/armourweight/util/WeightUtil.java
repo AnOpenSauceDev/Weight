@@ -28,6 +28,12 @@ public class WeightUtil {
         return this.count;
     }
 
+    /**
+     *  <li>An advanced version of CalculateWeight. Gives programmers more fine control over what is calculated</>
+     * @param type - What armour slot is being calculated
+     * @param player - The PlayerEntity get the armour data out of.
+     * @return
+     */
     public static float CalculateWeightAdv(armourType type, PlayerEntity player){
         float weightVal = 0;
         for(armourWeightDef weightDef : defs){
@@ -62,7 +68,7 @@ public class WeightUtil {
 
     public static float CalculateWeight(PlayerEntity player){
         float weightVal = 0;
-        for(armourWeightDef weightDef : defs){ // defs is the list, weightdef is the point in defs (big (O No)tation isn't that big of a problem here)
+        for(armourWeightDef weightDef : defs){ // defs is the list, weightdef is the point in defs (big O(h) Notation isn't that big of a problem here)
             for (int i = 0; i < player.getInventory().armor.size(); i++){ // do it 4 times
                 if(weightDef.armourItem == player.getInventory().armor.get(i).getItem()){ // if the armourItem of our weightDef is equal to the players equipped armour, add the weight of the def.
                     weightVal += weightDef.weight;

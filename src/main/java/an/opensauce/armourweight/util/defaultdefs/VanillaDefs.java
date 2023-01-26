@@ -5,6 +5,8 @@ import an.opensauce.armourweight.api.armourWeightDef;
 import an.opensauce.armourweight.util.WeightUtil;
 import net.minecraft.item.Items;
 
+import static an.opensauce.armourweight.Armourweight.MainLogger;
+
 /**
  * <li>The VERY long list that defines weights for all the vanilla armour.</>
  *  <li>this does serve as a pretty good example for anyone interested.</>
@@ -68,5 +70,6 @@ public class VanillaDefs {
         WeightUtil.addElement(netherite_leggings);
         WeightUtil.addElement(netherite_boots);
         WeightUtil.addElement(turtle_shell);
+        MainLogger.info("Registered vanilla weights!");
     }
 }
