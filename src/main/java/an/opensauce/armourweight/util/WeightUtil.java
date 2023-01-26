@@ -62,9 +62,9 @@ public class WeightUtil {
 
     public static float CalculateWeight(PlayerEntity player){
         float weightVal = 0;
-        for(armourWeightDef weightDef : defs){
+        for(armourWeightDef weightDef : defs){ // defs is the list, weightdef is the point in defs (big (O No)tation isn't that big of a problem here)
             for (int i = 0; i < player.getInventory().armor.size(); i++){ // do it 4 times
-                if(weightDef.armourItem == player.getInventory().armor.get(i).getItem()){
+                if(weightDef.armourItem == player.getInventory().armor.get(i).getItem()){ // if the armourItem of our weightDef is equal to the players equipped armour, add the weight of the def.
                     weightVal += weightDef.weight;
                 }
             }
