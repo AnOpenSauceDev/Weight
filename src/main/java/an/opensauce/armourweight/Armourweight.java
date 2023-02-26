@@ -33,7 +33,7 @@ public class Armourweight implements ModInitializer {
         VanillaDefs.Register();
         AutoConfig.register(Config.class, JanksonConfigSerializer::new);
         CalculateWeightCommand command = new CalculateWeightCommand();
-        CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) -> literal("CalculateWeight")
-                        .executes(new CalculateWeightCommand()));
+        CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) -> dispatcher.register(literal("CalculateWeight")
+                        .executes(context -> new CalculateWeightCommand().run(context))));
     }
 }
