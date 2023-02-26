@@ -27,7 +27,7 @@ public class CalculateWeightCommand implements Command<ServerCommandSource> /*im
         if(source.getPlayer() != null){ // if our sender exists
             PlayerEntity player = source.getPlayer();
             float value = WeightUtil.CalculateWeight(player);
-            player.sendMessage(Text.of("DEBUG: weight = " + value));
+            //player.sendMessage(Text.of("DEBUG: weight = " + value));
             return (int) (value * 10); // a weight of "3.5" will return as "35"
         }else { // if the player doesn't exist (like this being run from the console without "execute as <Player>")
             return 0;
