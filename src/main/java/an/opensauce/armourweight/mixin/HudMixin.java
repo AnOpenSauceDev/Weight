@@ -1,6 +1,7 @@
 package an.opensauce.armourweight.mixin;
 
 import an.opensauce.armourweight.deprecated.Weight;
+import an.opensauce.armourweight.util.Config;
 import an.opensauce.armourweight.util.WeightUtil;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.MinecraftClient;
@@ -24,10 +25,9 @@ public abstract class HudMixin extends DrawableHelper {
     @Shadow
     private int scaledWidth;
 
-
-
     @Inject(method = "render",at = @At("TAIL"))
     public void renderWeightBar(MatrixStack matrices, float tickDelta, CallbackInfo ci){
+        if(!Config.GetData().weightbar) { return; }
         this.client.getProfiler().push("armourbar");
         RenderSystem.setShaderTexture(0, DrawableHelper.GUI_ICONS_TEXTURE);
         //float f = Weight.CalculateWeight(MinecraftClient.getInstance().player); // old method

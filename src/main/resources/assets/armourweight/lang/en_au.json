@@ -8,5 +8,6 @@
   "text.autoconfig.armourweight.option.Marker1Amp": "Marker 1 Amplifier",
   "text.autoconfig.armourweight.option.Marker2Amp": "Marker 2 Amplifier",
   "text.autoconfig.armourweight.option.MarkerFinalAmp": "Marker 3 Amplifier",
-  "text.autoconfig.armourweight.option.unused1": "base armour modifier"
+  "text.autoconfig.armourweight.option.unused1": "base armour modifier",
+  "text.autoconfig.armourweight.option.weightbar": "enable weight bar?"
 }

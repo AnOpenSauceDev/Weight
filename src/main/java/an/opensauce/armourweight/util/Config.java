@@ -9,6 +9,9 @@ public class Config implements ConfigData {
 
 
 //   public static class markerdata {
+
+        @Comment("Show Bar?")
+        public boolean weightbar = true;
         @Comment("Weight Marker 1 point")
         public float Marker1 = 3;
         @Comment("Weight Marker 2 point")
