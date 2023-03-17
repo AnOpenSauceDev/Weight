@@ -32,12 +32,13 @@ public abstract class PlayerEntityMixin extends Entity {
        if(v > cfg.Marker1){
            if(v > cfg.Marker2){
                if(v >= cfg.markerFinalAmp){
-               HandleEffects(player,(int)cfg.markerFinaleffects,(int)cfg.markerFinalAmp);
-               }else {
-                    HandleEffects(player,(int)cfg.Marker2effects,(int)cfg.Marker2Amp);
-                 }
+                HandleEffects(player,(int)cfg.markerFinaleffects,(int)cfg.markerFinalAmp);
+                    }
+                    else {
+                        HandleEffects(player,(int)cfg.Marker2effects,(int)cfg.Marker2Amp);
+                    }
            }else {
-                       HandleEffects(player,(int)cfg.Marker1effects,(int)cfg.Marker1Amp);
+               HandleEffects(player,(int)cfg.Marker1effects,(int)cfg.Marker1Amp);
            }
        }
     }
