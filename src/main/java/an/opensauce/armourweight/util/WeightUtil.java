@@ -3,6 +3,8 @@ package an.opensauce.armourweight.util;
 import an.opensauce.armourweight.api.armourType;
 import an.opensauce.armourweight.api.armourWeightDef;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.ArmorItem;
+import net.minecraft.item.Item;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +14,14 @@ public class WeightUtil {
     public static int count; //the "int" field (not the Integer class) will have its value as 0 by default on java, initialization is not needed.
 
     private static List<armourWeightDef> defs = new ArrayList<>();
+
+    public static List<Item> asItemList(){
+        List<Item> list = null;
+        for (int x = 0; x < defs.size(); x++) {
+            list.add(defs.get(x).armourItem);
+        }
+        return list;
+    }
 
     //for (PlayerEntity playerEntity : world.getPlayers()) {
 
@@ -68,10 +78,20 @@ public class WeightUtil {
 
     public static float CalculateWeight(PlayerEntity player){
         float weightVal = 0;
-        for(armourWeightDef weightDef : defs){ // defs is the list, weightdef is the point in defs (big O(h) Notation isn't that big of a problem here)
+        for(armourWeightDef weightDef : defs){ // defs is the list, weightdef is the point in defs (big O(h) (No)tation isn't that big of a problem here)
             for (int i = 0; i < player.getInventory().armor.size(); i++){ // do it 4 times
                 if(weightDef.armourItem == player.getInventory().armor.get(i).getItem()){ // if the armourItem of our weightDef is equal to the players equipped armour, add the weight of the def.
-                    weightVal += weightDef.weight;
+                    if(asItemList().stream().anyMatch(player.getInventory().armor.get(i)::equals)){ // if no such def exists for this item
+
+                        ArmorItem armour = (ArmorItem) player.getInventory().armor.get(i).getItem(); // get the item
+
+                        weightVal += armour.getProtection() / 3; // add armour value instead (close enough to vanilla)
+
+                    }else {
+
+                        weightVal += weightDef.weight;
+
+                    }
                 }
             }
         }
