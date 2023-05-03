@@ -11,7 +11,7 @@
   "environment": "*",
   "entrypoints": {
     "client": [
-      "an.opensauce.armourweight.client.ArmourweightClient"
+      "an.opensauce.armourweight.commands.client.ArmourweightClient"
     ],
     "main": [
       "an.opensauce.armourweight.Armourweight"

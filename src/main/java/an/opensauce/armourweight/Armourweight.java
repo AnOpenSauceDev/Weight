@@ -1,5 +1,6 @@
 package an.opensauce.armourweight;
 
+import an.opensauce.armourweight.api.ServerResourceListener;
 import an.opensauce.armourweight.api.armourType;
 import an.opensauce.armourweight.commands.CalculateWeightCommand;
 import an.opensauce.armourweight.util.Config;
@@ -12,7 +13,9 @@ import me.shedaniel.autoconfig.serializer.JanksonConfigSerializer;
 import me.shedaniel.clothconfig2.api.ConfigBuilder;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
+import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
 import net.minecraft.command.argument.EntityArgumentType;
+import net.minecraft.resource.ResourceType;
 import net.minecraft.server.command.CommandManager;
 import net.minecraft.server.command.ServerCommandSource;
 import org.slf4j.Logger;
@@ -30,6 +33,9 @@ public class Armourweight implements ModInitializer {
     @Override
     public void onInitialize() {
         MainLogger.info("Armour Weight has loaded!");
+
+        ResourceManagerHelper.get(ResourceType.SERVER_DATA).registerReloadListener(new ServerResourceListener());
+
         VanillaDefs.Register();
         AutoConfig.register(Config.class, JanksonConfigSerializer::new);
         CalculateWeightCommand command = new CalculateWeightCommand();
