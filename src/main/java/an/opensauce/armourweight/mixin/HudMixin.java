@@ -1,6 +1,6 @@
 package an.opensauce.armourweight.mixin;
 
-import an.opensauce.armourweight.deprecated.Weight;
+
 import an.opensauce.armourweight.util.Config;
 import an.opensauce.armourweight.util.WeightUtil;
 import com.mojang.blaze3d.systems.RenderSystem;

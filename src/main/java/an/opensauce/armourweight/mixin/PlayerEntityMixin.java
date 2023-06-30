@@ -1,6 +1,6 @@
 package an.opensauce.armourweight.mixin;
 
-import an.opensauce.armourweight.deprecated.Weight;
+
 import an.opensauce.armourweight.util.Config;
 import an.opensauce.armourweight.util.WeightUtil;
 import me.shedaniel.autoconfig.AutoConfig;
@@ -25,7 +25,6 @@ public abstract class PlayerEntityMixin extends Entity {
     @Inject(method = "tick", at = @At("HEAD"))
     public void AddWeight(CallbackInfo ci){
         PlayerEntity player = (PlayerEntity)(Entity)this;
-       //float v = Weight.CalculateWeight(player); // old method
         float v = WeightUtil.CalculateWeight(player);
         Config cfg = Config.GetData();
 

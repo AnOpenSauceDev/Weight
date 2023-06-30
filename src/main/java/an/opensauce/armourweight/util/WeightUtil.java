@@ -85,7 +85,7 @@ public class WeightUtil {
                 if(weightDef.armourItem == player.getInventory().armor.get(i).getItem()){ // if the armourItem of our weightDef is equal to the players equipped armour, add the weight of the def.
                     if(!asItemList().stream().anyMatch(player.getInventory().armor.get(i).getItem()::equals)){ // if no such def exists for this item
 
-                        //MainLogger.warn(player.getInventory().armor.get(i) + " has no match! " + !asItemList().stream().anyMatch(player.getInventory().armor.get(i)::equals));
+                        MainLogger.warn(player.getInventory().armor.get(i) + " has no match! " + !asItemList().stream().anyMatch(player.getInventory().armor.get(i)::equals));
 
                         ArmorItem armour = (ArmorItem) player.getInventory().armor.get(i).getItem(); // get the item
 
