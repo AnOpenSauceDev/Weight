@@ -1,6 +1,6 @@
 {
-  "id_namespace": "immersive_armors",
-  "id_path": "heavy_boots",
-  "weight": 5,
-  "type": "heavy_boots"
+  "id_namespace": "minecraft",
+  "id_path": "iron_boots",
+  "weight": 0,
+  "type": "boots"
 }

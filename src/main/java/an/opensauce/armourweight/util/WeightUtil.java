@@ -40,7 +40,7 @@ public class WeightUtil {
         return defs;
     }
 
-    public static Set ScanForDuplicates(List<armourWeightDef> deflist){ // sanity check
+    public static Set ScanForDuplicates(List<armourWeightDef> deflist){ // sanity check, unused for now
         Set<armourWeightDef> set1 = new HashSet<>();
         final Set<armourWeightDef> set2 = new HashSet<>();
 

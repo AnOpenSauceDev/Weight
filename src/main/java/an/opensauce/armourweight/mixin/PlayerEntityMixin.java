@@ -51,7 +51,7 @@ public abstract class PlayerEntityMixin extends Entity {
             player.addStatusEffect(new StatusEffectInstance(StatusEffects.RESISTANCE,(10*20),0,!false,false,false));
             player.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS,(10*20),amp,!false,false,false));
         } else if (id == 3) {
-            player.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS,(10*20),2,!false,false,false));
+            player.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS,(10*20),amp,!false,false,false));
             player.addStatusEffect(new StatusEffectInstance(StatusEffects.RESISTANCE,(10*20),1,!false,false,false));
             player.addStatusEffect(new StatusEffectInstance(StatusEffects.STRENGTH,(10*20),(amp/2),!false,false,false));
 
