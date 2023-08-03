@@ -44,6 +44,7 @@ public class VanillaDefs {
     static armourWeightDef turtle_shell = new armourWeightDef(armourType.HEAD,1,Items.TURTLE_HELMET);
     //DEF END
 
+
     public static void Register(){
         WeightUtil.addElement(leather_helmet);
         WeightUtil.addElement(leather_chestplate);

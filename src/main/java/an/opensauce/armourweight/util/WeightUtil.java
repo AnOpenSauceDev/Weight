@@ -1,5 +1,6 @@
 package an.opensauce.armourweight.util;
 
+import an.opensauce.armourweight.Armourweight;
 import an.opensauce.armourweight.api.armourType;
 import an.opensauce.armourweight.api.armourWeightDef;
 import net.minecraft.entity.player.PlayerEntity;
@@ -8,7 +9,9 @@ import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import static an.opensauce.armourweight.Armourweight.MainLogger;
 
@@ -31,6 +34,24 @@ public class WeightUtil {
     public static void addElement(armourWeightDef def){
         count++;
         defs.add(def);
+    }
+
+    public static List<armourWeightDef> getDefs(){
+        return defs;
+    }
+
+    public static Set ScanForDuplicates(List<armourWeightDef> deflist){ // sanity check
+        Set<armourWeightDef> set1 = new HashSet<>();
+        final Set<armourWeightDef> set2 = new HashSet<>();
+
+        for (armourWeightDef def : deflist) {
+            if (!set2.add(def)) {
+                set1.add(def);
+            }else {
+                MainLogger.warn("Duplicate weight definition found!");
+            }
+        }
+        return set1;
     }
 
     public static armourWeightDef get(int index){

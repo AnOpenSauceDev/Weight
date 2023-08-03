@@ -43,7 +43,7 @@ public class ServerResourceListener implements SimpleSynchronousResourceReloadLi
                 //convert the binary to a JSON string
                 String data = IOUtils.toString(stream, StandardCharsets.UTF_8);
 
-                // do dark magic (change later)
+                // do dark magic
                 JsonObject object = new Gson().fromJson(data, JsonObject.class);
 
                 // search of an "id" string element, then set that as our value
@@ -53,26 +53,31 @@ public class ServerResourceListener implements SimpleSynchronousResourceReloadLi
                 String Type = object.get("type").getAsString(); // armorType
 
 
-                // _almost_ programming horror.
-                if(Type == "head"){
-                    armourWeightDef def = new armourWeightDef(armourType.HEAD,weight, Registries.ITEM.get(new Identifier(ArmourIdNamespace,ArmourIdPath)));
-                    WeightUtil.addElement(def);
-                }else  if (Type == "chest"){
-                    armourWeightDef def = new armourWeightDef(armourType.CHEST,weight, Registries.ITEM.get(new Identifier(ArmourIdNamespace,ArmourIdPath)));
-                    WeightUtil.addElement(def);
-                } else if (Type == "leggings") {
-                    armourWeightDef def = new armourWeightDef(armourType.LEGS,weight, Registries.ITEM.get(new Identifier(ArmourIdNamespace,ArmourIdPath)));
-                    WeightUtil.addElement(def);
-                } else if (Type == "boots") {
-                    armourWeightDef def = new armourWeightDef(armourType.BOOTS,weight, Registries.ITEM.get(new Identifier(ArmourIdNamespace,ArmourIdPath)));
-                    WeightUtil.addElement(def);
-                }else {
-                    armourWeightDef def = new armourWeightDef(armourType.OTHER,weight, Registries.ITEM.get(new Identifier(ArmourIdNamespace,ArmourIdPath)));
-                    WeightUtil.addElement(def);
+                armourWeightDef def;
+
+                // used to be an ugly if-else block, now its *pretty*
+                switch (Type){
+                    case "head":
+                        def = new armourWeightDef(armourType.HEAD,weight, Registries.ITEM.get(new Identifier(ArmourIdNamespace,ArmourIdPath)));
+                        break;
+
+                    case "chest":
+                        def = new armourWeightDef(armourType.CHEST,weight, Registries.ITEM.get(new Identifier(ArmourIdNamespace,ArmourIdPath)));
+                        break;
+
+                    case "leggings":
+                        def = new armourWeightDef(armourType.LEGS,weight, Registries.ITEM.get(new Identifier(ArmourIdNamespace,ArmourIdPath)));
+                    break;
+
+                    case "boots":
+                        def = new armourWeightDef(armourType.BOOTS,weight, Registries.ITEM.get(new Identifier(ArmourIdNamespace,ArmourIdPath)));
+                        break;
+
+                    default:
+                        def = new armourWeightDef(armourType.OTHER,weight, Registries.ITEM.get(new Identifier(ArmourIdNamespace,ArmourIdPath)));
                 }
 
-
-
+                WeightUtil.addElement(def);
 
             }catch (Exception ex){
                 MainLogger.error("resource data failed to load, printing error...");
