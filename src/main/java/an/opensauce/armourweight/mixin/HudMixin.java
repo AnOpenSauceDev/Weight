@@ -23,7 +23,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(InGameHud.class)
 public abstract class HudMixin {
 
-    @Shadow @Final private static Identifier ICONS;
+
     @Shadow
     private MinecraftClient client;
     @Shadow
@@ -31,10 +31,12 @@ public abstract class HudMixin {
     @Shadow
     private int scaledWidth;
 
+    Identifier ICONS = new Identifier("boss_bar/blue_progress");
 
     //static Identifier ICONS_TEXTURE = new Identifier("minecraft","textures/gui/icons.png"); // By pure dumb luck I somehow managed to have a mixin conflict with this
     @Inject(method = "render",at = @At("TAIL"))
     public void renderWeightBar(DrawContext context, float tickDelta, CallbackInfo ci){
+     /*
         if(!Config.GetData().weightbar) { return; }
         float f = WeightUtil.CalculateWeight(MinecraftClient.getInstance().player);
       if(f > 0) {
@@ -44,6 +46,8 @@ public abstract class HudMixin {
           int k = this.scaledHeight - 32 + 3;
           k -= 26;
 
+
+
           context.drawTexture(ICONS, x, k, 0, 84, 80, 5);
           if (0 > 0) {
               context.drawTexture(ICONS, x, k, 0, 74, 80, 5);
@@ -51,6 +55,7 @@ public abstract class HudMixin {
               context.drawTexture(ICONS, x, k, 0, 89, j / 2, 5);
           }
       }
+      */
     }
 
     @Shadow
