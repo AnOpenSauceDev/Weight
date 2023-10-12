@@ -29,10 +29,14 @@ public class Armourweight implements ModInitializer {
 
     public static final String ModId = "armourweight";
 
-    public static Logger MainLogger = LoggerFactory.getLogger(ModId);
+    public static final String MOD_NAME = "Armour Weight";
+
+    public static Logger MainLogger = LoggerFactory.getLogger(MOD_NAME);
     @Override
     public void onInitialize() {
         MainLogger.info("Armour Weight has loaded!");
+
+
 
         ResourceManagerHelper.get(ResourceType.SERVER_DATA).registerReloadListener(new ServerResourceListener());
 

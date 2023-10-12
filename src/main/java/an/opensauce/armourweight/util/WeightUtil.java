@@ -1,6 +1,7 @@
 package an.opensauce.armourweight.util;
 
 import an.opensauce.armourweight.Armourweight;
+import an.opensauce.armourweight.api.RegistryTools;
 import an.opensauce.armourweight.api.armourType;
 import an.opensauce.armourweight.api.armourWeightDef;
 import net.minecraft.entity.player.PlayerEntity;
@@ -101,10 +102,15 @@ public class WeightUtil {
     }
 
     public static float CalculateWeight(PlayerEntity player){
+
         float weightVal = 0;
+
         for(armourWeightDef weightDef : defs){ // defs is the list, weightdef is the point in defs ((big Oh No)tation isn't that big of a problem here)
+
             for (int i = 0; i < player.getInventory().armor.size(); i++){ // do it 4 times
+
                 if(weightDef.armourItem == player.getInventory().armor.get(i).getItem() && weightDef.armourItem != Items.AIR){ // if the armourItem of our weightDef is equal to the players equipped armour, add the weight of the def.
+
                     if(!asItemList().stream().anyMatch(player.getInventory().armor.get(i).getItem()::equals)){ // if no such def exists for this item
 
                         MainLogger.warn(player.getInventory().armor.get(i) + " has no match! " + !asItemList().stream().anyMatch(player.getInventory().armor.get(i)::equals));
@@ -117,10 +123,16 @@ public class WeightUtil {
                     }else {
                         weightVal += weightDef.weight;
 
+
                     }
                 }
             }
         }
+
+        for(int x = 0; x < RegistryTools.Addons.size(); x++){
+            RegistryTools.Addons.get(x).onWeightCalculation(weightVal);
+        }
+
         return weightVal;
     }
 

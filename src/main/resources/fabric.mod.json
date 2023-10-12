@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "armourweight",
-  "version": "1.5",
+  "version": "1.6",
   "name": "Armour Weight",
   "description": "",
   "authors": [],
@@ -11,7 +11,7 @@
   "environment": "*",
   "entrypoints": {
     "client": [
-      "an.opensauce.armourweight.commands.client.ArmourweightClient"
+      "an.opensauce.armourweight.client.ArmourweightClient"
     ],
     "main": [
       "an.opensauce.armourweight.Armourweight"

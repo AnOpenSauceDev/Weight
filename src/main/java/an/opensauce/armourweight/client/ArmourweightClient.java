@@ -1,4 +1,4 @@
-package an.opensauce.armourweight.commands.client;
+package an.opensauce.armourweight.client;
 
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
