@@ -2,12 +2,13 @@ package an.opensauce.armourweight.api;
 
 import an.opensauce.armourweight.Armourweight;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
 public class RegistryTools {
 
-    public static List<Addon> Addons;
+    public static List<Addon> Addons = new ArrayList<>();
 
 
     public static void addAPIAddon(Addon addon){

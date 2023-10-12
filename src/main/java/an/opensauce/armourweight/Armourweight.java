@@ -1,5 +1,7 @@
 package an.opensauce.armourweight;
 
+import an.opensauce.armourweight.api.Addon;
+import an.opensauce.armourweight.api.RegistryTools;
 import an.opensauce.armourweight.api.ServerResourceListener;
 import an.opensauce.armourweight.api.armourType;
 import an.opensauce.armourweight.commands.CalculateWeightCommand;
@@ -32,9 +34,14 @@ public class Armourweight implements ModInitializer {
     public static final String MOD_NAME = "Armour Weight";
 
     public static Logger MainLogger = LoggerFactory.getLogger(MOD_NAME);
+
+    private Addon baseAddon = new Addon("1.0", "Armour Weight Base");
+
     @Override
     public void onInitialize() {
 
+
+        RegistryTools.addAPIAddon(baseAddon); // create a base addon as a sanity check.
 
         MainLogger.info("Armour Weight has loaded!");
 
