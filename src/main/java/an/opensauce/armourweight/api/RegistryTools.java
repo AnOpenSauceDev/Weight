@@ -15,7 +15,7 @@ public class RegistryTools {
         Addons.add(addon);
         addon.onAddonEnable();
 
-        Armourweight.MainLogger.info("Loaded Addon: " + addon.ADDON_NAME);
+        Armourweight.MainLogger.info("Loaded Addon: " + addon.ADDON_NAME + " Version: " + addon.ADDON_VERSION);
 
     }
 

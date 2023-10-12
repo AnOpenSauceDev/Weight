@@ -34,8 +34,9 @@ public class Armourweight implements ModInitializer {
     public static Logger MainLogger = LoggerFactory.getLogger(MOD_NAME);
     @Override
     public void onInitialize() {
-        MainLogger.info("Armour Weight has loaded!");
 
+
+        MainLogger.info("Armour Weight has loaded!");
 
 
         ResourceManagerHelper.get(ResourceType.SERVER_DATA).registerReloadListener(new ServerResourceListener());

@@ -64,7 +64,7 @@ public class WeightUtil {
     }
 
     /**
-     *  <li>An advanced version of CalculateWeight. Gives programmers more fine control over what is calculated</>
+     *  <li>An advanced version of CalculateWeight. Gives programmers more fine control over what is calculated.</li>
      * @param type  What armour slot is being calculated
      * @param player  The PlayerEntity to get the armour data out of.
      * @return the weight value of the slot calculated
