@@ -1,5 +1,7 @@
 package an.opensauce.armourweight.api;
 
+import net.minecraft.entity.player.PlayerEntity;
+
 public class Addon {
 
     public Addon(String version, String name){
@@ -10,7 +12,7 @@ public class Addon {
     public String ADDON_VERSION;
     public String ADDON_NAME;
 
-    public void onWeightCalculation(float weight){
+    public void onWeightCalculation(float weight, PlayerEntity player){
 
     }
 

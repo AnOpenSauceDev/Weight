@@ -130,7 +130,7 @@ public class WeightUtil {
         }
 
         for(int x = 0; x < RegistryTools.Addons.size(); x++){
-            RegistryTools.Addons.get(x).onWeightCalculation(weightVal);
+            RegistryTools.Addons.get(x).onWeightCalculation(weightVal,player);
         }
 
         return weightVal;
