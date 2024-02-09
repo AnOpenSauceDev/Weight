@@ -36,7 +36,6 @@ public abstract class HudMixin {
     //static Identifier ICONS_TEXTURE = new Identifier("minecraft","textures/gui/icons.png"); // By pure dumb luck I somehow managed to have a mixin conflict with this
     @Inject(method = "render",at = @At("TAIL"))
     public void renderWeightBar(DrawContext context, float tickDelta, CallbackInfo ci){
-     /*
         if(!Config.GetData().weightbar) { return; }
         float f = WeightUtil.CalculateWeight(MinecraftClient.getInstance().player);
       if(f > 0) {
@@ -48,14 +47,10 @@ public abstract class HudMixin {
 
 
 
-          context.drawTexture(ICONS, x, k, 0, 84, 80, 5);
-          if (0 > 0) {
-              context.drawTexture(ICONS, x, k, 0, 74, 80, 5);
-          } else if (j > 0) {
-              context.drawTexture(ICONS, x, k, 0, 89, j / 2, 5);
-          }
+          context.drawTexture(ICONS, x, k, 0, 89, j / 2, 5);
+
       }
-      */
+
     }
 
     @Shadow
