@@ -9,10 +9,7 @@ import net.minecraft.item.ArmorItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 import static an.opensauce.armourweight.Armourweight.MainLogger;
 
@@ -118,13 +115,37 @@ public class WeightUtil {
                         ArmorItem armour = (ArmorItem) player.getInventory().armor.get(i).getItem(); // get the item
 
                         weightVal += armour.getProtection() / 3; // add armour value instead (close enough to vanilla), im 73% sure that "protection" is the armour points.
-                        
+
 
                     }else {
                         weightVal += weightDef.weight;
-
-
                     }
+
+
+                    // datapack execution
+                    if(!player.getWorld().isClient){
+
+                        var server = player.getServer();
+
+                        //System.err.println( player.getServer().getCommandFunctionManager().getAllFunctions());
+
+                        player.getServer().getCommandFunctionManager().getAllFunctions().forEach( identifier -> {
+
+                            var functionid = server.getCommandFunctionManager().getFunction(identifier);
+
+                            if(functionid.isPresent()){
+
+                                var function = functionid.get();
+
+
+
+                                if(Objects.equals(function.id().getPath(), weightDef.armourItem.toString()) && Objects.equals(function.id().getNamespace(), "armourweight")){
+                                    server.getCommandFunctionManager().execute(function,player.getCommandSource());
+                                }
+                            }
+                        });
+                    }
+
                 }
             }
         }
