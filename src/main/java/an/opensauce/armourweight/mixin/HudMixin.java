@@ -37,7 +37,7 @@ public abstract class HudMixin {
     //static Identifier ICONS_TEXTURE = new Identifier("minecraft","textures/gui/icons.png"); // By pure dumb luck I somehow managed to have a mixin conflict with this
     @Inject(method = "render",at = @At("TAIL"))
     public void renderWeightBar(DrawContext context, float tickDelta, CallbackInfo ci){
-        if(!Config.GetData().weightbar) { return; }
+        if(!Config.GetData().weightbar || MinecraftClient.getInstance().player.isCreative()) { return; }
         float f = WeightUtil.CalculateWeight(MinecraftClient.getInstance().player);
       if(f > 0) {
           int i = 182;
@@ -48,8 +48,9 @@ public abstract class HudMixin {
 
 
 
-
-          context.drawTexture(ARMOR_FULL_TEXTURE, x, k, 0, 0, j / 2, 5);
+          var texw = j / 4; var texh = 5;
+          // specify texture dimensions so it renders properly. Doesn't account for absorption not creating a new line, but that's something for... later.
+          context.drawTexture(new Identifier("armourweight","textures/gui/weight.png"), x, (int) (k - (8 * Math.ceil(MinecraftClient.getInstance().player.getMaxHealth()/ 20)) - (8 * Math.ceil(MinecraftClient.getInstance().player.getMaxAbsorption() / 20))), 0, 0,texw ,12,12,12);
       }
 
     }
