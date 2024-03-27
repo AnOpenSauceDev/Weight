@@ -2,7 +2,6 @@ package an.opensauce.armourweight.mixin;
 
 
 import an.opensauce.armourweight.Armourweight;
-import an.opensauce.armourweight.client.graphics.DynamicColourTexture;
 import an.opensauce.armourweight.util.Config;
 import an.opensauce.armourweight.util.WeightUtil;
 import net.minecraft.client.MinecraftClient;
@@ -10,6 +9,7 @@ import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.hud.InGameHud;
 import net.minecraft.util.Identifier;
+import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
@@ -23,6 +23,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public abstract class HudMixin {
 
 
+    @Shadow @Final private static Identifier ARMOR_FULL_TEXTURE;
     @Shadow
     private MinecraftClient client;
     @Shadow
@@ -31,7 +32,7 @@ public abstract class HudMixin {
     private int scaledWidth;
 
 
-    DynamicColourTexture BAR_COLOUR = new DynamicColourTexture(new Identifier(Armourweight.ModId,"dynamicbartex"));
+
 
     //static Identifier ICONS_TEXTURE = new Identifier("minecraft","textures/gui/icons.png"); // By pure dumb luck I somehow managed to have a mixin conflict with this
     @Inject(method = "render",at = @At("TAIL"))
@@ -45,12 +46,10 @@ public abstract class HudMixin {
           int k = this.scaledHeight - 32 + 3;
           k -= 26;
 
-          BAR_COLOUR.setImageColour(0xFFFFFF,client);
 
 
 
-
-          context.drawTexture(BAR_COLOUR.ImageID, x, k, 0, 0, j / 2, 5);
+          context.drawTexture(ARMOR_FULL_TEXTURE, x, k, 0, 0, j / 2, 5);
       }
 
     }
