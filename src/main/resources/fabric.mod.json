@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "armourweight",
-  "version": "1.6",
+  "version": "1.7",
   "name": "Armour Weight",
   "description": "",
   "authors": [],
@@ -27,6 +27,6 @@
     "fabricloader": ">=0.14.13",
     "fabric": "*",
     "cloth-config": "*",
-    "minecraft": ">=1.19"
+    "minecraft": ">=1.20.2"
   }
 }
