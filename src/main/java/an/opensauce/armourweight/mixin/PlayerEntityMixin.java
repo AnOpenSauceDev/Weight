@@ -45,15 +45,15 @@ public abstract class PlayerEntityMixin extends Entity {
     void HandleEffects(PlayerEntity player, int id, int amp){
         if(id == 1){
             //player.addStatusEffect(new StatusEffectInstance(StatusEffects.RESISTANCE,(10*20),1,!false,false,false));
-            player.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS,(10*20),amp,!false,false,false));
+            player.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS,(20),amp,!false,false,false));
 
         } else if (id == 2) {
-            player.addStatusEffect(new StatusEffectInstance(StatusEffects.RESISTANCE,(10*20),0,!false,false,false));
-            player.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS,(10*20),amp,!false,false,false));
+            player.addStatusEffect(new StatusEffectInstance(StatusEffects.RESISTANCE,(20),0,true,false,false));
+            player.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS,(20),amp,true,false,false));
         } else if (id == 3) {
-            player.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS,(10*20),amp,!false,false,false));
-            player.addStatusEffect(new StatusEffectInstance(StatusEffects.RESISTANCE,(10*20),1,!false,false,false));
-            player.addStatusEffect(new StatusEffectInstance(StatusEffects.STRENGTH,(10*20),(amp/2),!false,false,false));
+            player.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS,(20),amp,true,false,false));
+            player.addStatusEffect(new StatusEffectInstance(StatusEffects.RESISTANCE,(20),1,true,false,false));
+            player.addStatusEffect(new StatusEffectInstance(StatusEffects.STRENGTH,(20),(amp/2),true,false,false));
 
         }else{
             System.out.println("WARNING: INVALID VALUE GIVEN FOR EFFECTS");
